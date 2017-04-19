@@ -8,7 +8,7 @@
     "mocha": "NODE_ENV=test _mocha --require babel-register --recursive test",
     "karma": "karma start",
     "compile": "babel index.js --out-dir dst",
-    "prepublish": "npm run compiles"
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
