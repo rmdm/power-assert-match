@@ -1,7 +1,7 @@
 {
   "name": "power-assert-match",
   "version": "0.1.0",
-  "description": "assert-match empowered",
+  "description": "power + assert-match >:3",
   "main": "dst/index.js",
   "scripts": {
     "test": "npm run mocha && npm run karma",
@@ -16,11 +16,11 @@
   },
   "keywords": [
     "power-assert",
-    "assert-match",
-    "power",
     "assert",
+    "matchers",
     "match",
-    "matchers"
+    "isMatch",
+    "assert-match"
   ],
   "author": "rmdm",
   "license": "MIT",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/rmdm/power-assert-match#readme",
   "dependencies": {
-    "assert-match": "^1.0.1",
+    "assert-match": "^1.0.2",
     "babel-runtime": "^6.23.0",
     "empower": "^1.2.1",
     "power-assert-formatter": "^1.4.1"
