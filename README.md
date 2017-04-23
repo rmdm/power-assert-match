@@ -82,7 +82,7 @@ transform your code using one of `power-assert` [instrumentors](https://github.c
 
 **Note**, that unlike for `power-assert`, where `require('assert')` calls are
 substituted by the instrumentors with `require('power-assert')`, to use
-`power-assert-match` you need to require it directly in your code.
+`power-assert-match` you need to require it directly.
 
 Related projects
 ================
