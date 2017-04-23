@@ -40,7 +40,6 @@ assert.deepEqual({
 //       +      "[typeof]": "number"
 //       +    }
 //          ]
-//          "str": "abc"
 //        }
 ```
 
