@@ -1,6 +1,6 @@
 {
   "name": "power-assert-match",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "power + assert-match >:3",
   "main": "dst/index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/rmdm/power-assert-match#readme",
   "dependencies": {
-    "assert-match": "^1.0.2",
+    "assert-match": "^1.0.3",
     "babel-runtime": "^6.23.0",
     "empower": "^1.2.1",
     "power-assert-formatter": "^1.4.1"
