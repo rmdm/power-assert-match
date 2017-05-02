@@ -12,35 +12,31 @@ Short example
 import assert from 'power-assert-match'
 const { arrayOf, type } = assert.matchers
 
-assert.deepEqual({
-    str: 'abc',
-    nums: [ 1, 2, 'x' ],
-}, {
-    str: 'abc',
-    nums: arrayOf(type('number')),
-})
+assert.deepEqual({ nums: [ 1, 2, 'x' ] }, { nums: arrayOf(type('number')) })
 
-// AssertionError:   # test/power-assert-match.spec.js:9
+//      AssertionError:   # test/power-assert-match.spec.js:30
 //
-//   assert.deepEqual({ str: 'abc', nums: [1, 2, 'x'] }, { str: 'abc', nums: arrayOf(type('number')) })
-//                    |                   |              |                   |       |
-//                    |                   |              |                   |       TypeMatcher{expected:"number"}
-//                    |                   |              |                   ArrayOfMatcher{expected:#TypeMatcher#}
-//                    |                   [1,2,"x"]      Object{str:"abc",nums:#ArrayOfMatcher#}
-//                    Object{str:"abc",nums:#Array#}
+//  assert.deepEqual({ nums: nums }, { nums: arrayOf(type(expectedType)) })
+//                   |       |       |       |       |    |
+//                   |       |       |       |       |    "number"
+//                   |       |       |       |       TypeMatcher{expected:"number"}
+//                   |       |       |       ArrayOfMatcher{expected:#TypeMatcher#}
+//                   |       |       Object{nums:#ArrayOfMatcher#}
+//                   |       [1,2,"x"]
+//                   Object{nums:#Array#}
 //
-//       + expected - actual
+//      + expected - actual
 //
-//        {
-//          "nums": [
-//            1
-//            2
-//       -    "x"
-//       +    {
-//       +      "[typeof]": "number"
-//       +    }
-//          ]
-//        }
+//       {
+//         "nums": [
+//           1
+//           2
+//      -    "x"
+//      +    {
+//      +      "[typeof]": "number"
+//      +    }
+//         ]
+//       }
 ```
 
 Installation
@@ -88,3 +84,49 @@ Related projects
 ================
 
 - [assert-match](https://github.com/rmdm/assert-match)
+
+More output examples
+====================
+
+```javascript
+assert.deepEqual(number, regex(numRegex))
+                 |       |     |
+                 |       |     /^\d+$/
+                 "555f"  RegexMatcher{expected:/^\d+$/}
+
+
+assert.deepEqual(a, every([gt(b), lt(c)]))
+                 |  |     ||  |   |  |
+                 |  |     ||  |   |  10
+                 |  |     ||  5   LtMatcher{expected:10}
+                 |  |     |GtMatcher{expected:5}
+                 |  |     [#GtMatcher#,#LtMatcher#]
+                 15 EveryMatcher{expected:#Array#}
+
+
+assert.deepEqual(actual, loose(expected))
+                 |       |     |
+                 |       |     Object{b:5}
+                 |       LooseMatcher{expected:#Object#}
+                 Object{a:1,b:2,c:3}
+
+
+assert.deepEqual(array, contains(val))
+                 |      |        |
+                 |      |        5
+                 |      ContainsMatcher{expected:5}
+                 [1,2,3]
+
+
+assert.deepEqual(obj, primitive(prim))
+                 |    |         |
+                 |    |         "[object Arguments]"
+                 |    PrimitiveMatcher{expected:"[object Arguments]"}
+                 Object{}
+
+
+assert.deepEqual(val, not(val))
+                 |    |   |
+                 |    |   5
+                 5    NotMatcher{expected:5}
+```

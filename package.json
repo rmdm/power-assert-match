@@ -7,7 +7,7 @@
     "test": "npm run mocha && npm run karma",
     "mocha": "NODE_ENV=test _mocha --require babel-register --recursive test",
     "karma": "karma start",
-    "compile": "babel index.js --out-dir dst",
+    "compile": "babel src --out-dir dst",
     "prepublish": "npm run compile"
   },
   "repository": {
