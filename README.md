@@ -12,7 +12,10 @@ Short example
 import assert from 'power-assert-match'
 const { arrayOf, type } = assert.matchers
 
-assert.deepEqual({ nums: [ 1, 2, 'x' ] }, { nums: arrayOf(type('number')) })
+const nums = [ 1, 2, 'x' ]
+const expectedType = 'number'
+
+assert.deepEqual({ nums: nums }, { nums: arrayOf(type(expectedType)) })
 
 //      AssertionError:   # test/power-assert-match.spec.js:30
 //
@@ -52,9 +55,11 @@ Usage
 Usage of `power-assert-match` is quite similar to that of
 [`power-assert`](https://github.com/power-assert-js/power-assert):
 
-1. require `power-assert-match`
+1. require or import `power-assert-match`
 ```javascript
 const assert = require('power-assert-match')
+// OR
+import assert from 'power-assert-match'
 ```
 2. use it
 ``` javascript
@@ -80,15 +85,16 @@ transform your code using one of `power-assert` [instrumentors](https://github.c
 substituted by the instrumentors with `require('power-assert')`, to use
 `power-assert-match` you need to require it directly.
 
-Related projects
-================
-
-- [assert-match](https://github.com/rmdm/assert-match)
-
 More output examples
 ====================
 
 ```javascript
+assert.deepEqual(val, not(val))
+                 |    |   |
+                 |    |   5
+                 5    NotMatcher{expected:5}
+
+
 assert.deepEqual(number, regex(numRegex))
                  |       |     |
                  |       |     /^\d+$/
@@ -123,10 +129,9 @@ assert.deepEqual(obj, primitive(prim))
                  |    |         "[object Arguments]"
                  |    PrimitiveMatcher{expected:"[object Arguments]"}
                  Object{}
-
-
-assert.deepEqual(val, not(val))
-                 |    |   |
-                 |    |   5
-                 5    NotMatcher{expected:5}
 ```
+
+Related projects
+================
+
+- [assert-match](https://github.com/rmdm/assert-match)
