@@ -55,11 +55,9 @@ Usage
 Usage of `power-assert-match` is quite similar to that of
 [`power-assert`](https://github.com/power-assert-js/power-assert):
 
-1. require or import `power-assert-match`
+1. require `power-assert-match`
 ```javascript
 const assert = require('power-assert-match')
-// OR
-import assert from 'power-assert-match'
 ```
 2. use it
 ``` javascript
