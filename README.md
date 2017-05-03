@@ -58,10 +58,11 @@ Usage of `power-assert-match` is quite similar to that of
 1. require `power-assert-match`
 ```javascript
 const assert = require('power-assert-match')
-const { loose } = assert.matchers
 ```
 2. use it
 ``` javascript
+const { loose } = assert.matchers
+
 const actual = { a: 1, b: 2 }
 const expected = { a: 10 }
 
