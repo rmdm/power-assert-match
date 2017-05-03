@@ -55,15 +55,17 @@ describe('power-assert-match tests', function () {
 
         assertThrowsWithMessage(function () {
             const a = 15, b = 5, c = 10
-            assert.deepEqual(a, every([ gt(b), lt(c) ]))
+            assert.deepEqual({ val: a }, { val: every([ gt(b), lt(c) ]) })
         }, [
-            '  assert.deepEqual(a, every([gt(b), lt(c)]))',
-            '                   |  |     ||  |   |  |    ',
-            '                   |  |     ||  |   |  10   ',
-            '                   |  |     ||  5   LtMatcher{expected:10}',
-            '                   |  |     |GtMatcher{expected:5}',
-            '                   |  |     [#GtMatcher#,#LtMatcher#]',
-            '                   15 EveryMatcher{expected:#Array#}',
+            '  assert.deepEqual({ val: a }, { val: every([gt(b), lt(c)]) })',
+            '                   |      |    |      |     ||  |   |  |      ',
+            '                   |      |    |      |     ||  |   |  10     ',
+            '                   |      |    |      |     ||  5   LtMatcher{expected:10}',
+            '                   |      |    |      |     |GtMatcher{expected:5}',
+            '                   |      |    |      |     [#GtMatcher#,#LtMatcher#]',
+            '                   |      |    |      EveryMatcher{expected:#Array#}',
+            '                   |      15   Object{val:#EveryMatcher#}     ',
+            '                   Object{val:15}                             ',
         ])
 
         assertThrowsWithMessage(function () {
