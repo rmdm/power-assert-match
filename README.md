@@ -58,6 +58,7 @@ Usage of `power-assert-match` is quite similar to that of
 1. require `power-assert-match`
 ```javascript
 const assert = require('power-assert-match')
+const { loose } = assert.matchers
 ```
 2. use it
 ``` javascript
