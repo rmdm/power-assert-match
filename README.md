@@ -61,7 +61,10 @@ const assert = require('power-assert-match')
 ```
 2. use it
 ``` javascript
-assert.deepEqual({ a: 1, b: 2 }, loose({ a: 1 }))
+const actual = { a: 1, b: 2 }
+const expected = { a: 10 }
+
+assert.deepEqual(actual, loose(expected))
 ```
 3. to get descriptive messages like one in the example above you need to
 transform your code using one of `power-assert` [instrumentors](https://github.com/power-assert-js/power-assert#be-sure-to-transform-test-code):
@@ -82,6 +85,17 @@ transform your code using one of `power-assert` [instrumentors](https://github.c
 **Note**, that unlike for `power-assert`, where `require('assert')` calls are
 substituted by the instrumentors with `require('power-assert')`, to use
 `power-assert-match` you need to require it directly.
+
+After applying transform you get the following output:
+
+```javascript
+assert.deepEqual(actual, loose(expected))
+                 |       |     |
+                 |       |     Object{a:10}
+                 |       LooseMatcher{expected:#Object#}
+                 Object{a:1,b:2}
+```
+
 
 More output examples
 ====================
@@ -129,6 +143,12 @@ assert.deepEqual(obj, primitive(prim))
                  |    |         "[object Arguments]"
                  |    PrimitiveMatcher{expected:"[object Arguments]"}
                  Object{}
+
+
+assert.deepEqual(actual, expected)
+                 |       |
+                 |       Object{a:1,b:3,c:5}
+                 Object{a:1,b:2,c:3}
 ```
 
 Related projects

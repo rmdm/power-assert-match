@@ -40,6 +40,20 @@ describe('power-assert-match tests', function () {
         ])
     })
 
+    it('Usage example', function () {
+        assertThrowsWithMessage(function () {
+            const actual = { a: 1, b: 2 }
+            const expected = { a: 10 }
+            assert.deepEqual(actual, loose(expected))
+        }, [
+            '  assert.deepEqual(actual, loose(expected))',
+            '                   |       |     |         ',
+            '                   |       |     Object{a:10}',
+            '                   |       LooseMatcher{expected:#Object#}',
+            '                   Object{a:1,b:2}         ',
+        ])
+    })
+
     it('README More examples', function () {
 
         assertThrowsWithMessage(function () {
@@ -112,6 +126,17 @@ describe('power-assert-match tests', function () {
             '                   |    |   |    ',
             '                   |    |   5    ',
             '                   5    NotMatcher{expected:5}',
+        ])
+
+        assertThrowsWithMessage(function () {
+            const actual = { a: 1, b: 2, c: 3 }
+            const expected = { a: 1, b: 3, c: 5 }
+            assert.deepEqual(actual, expected)
+        }, [
+            '  assert.deepEqual(actual, expected)',
+            '                   |       |        ',
+            '                   |       Object{a:1,b:3,c:5}',
+            '                   Object{a:1,b:2,c:3}',
         ])
     })
 
