@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rmdm/power-assert-match.svg?branch=master)](https://travis-ci.org/rmdm/power-assert-match)
+[![Build Status](https://travis-ci.org/rmdm/power-assert-match.svg?branch=master)](https://travis-ci.org/rmdm/power-assert-match) [![Greenkeeper badge](https://badges.greenkeeper.io/rmdm/power-assert-match.svg)](https://greenkeeper.io/)
 
 power-assert-match
 ==================
